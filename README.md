@@ -1,0 +1,1 @@
+A mini project focuses on slot & booking managment
