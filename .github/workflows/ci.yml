@@ -37,3 +37,6 @@ jobs:
 
       - name: Run Tests
         run: npm run test:run
+
+      - name: Build Docker Image
+        run: docker build -t medibook-frontend .
