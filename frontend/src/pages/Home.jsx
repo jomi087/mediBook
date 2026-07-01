@@ -1,5 +1,13 @@
-const Home = () => {
-  return <div>Home</div>;
-};
+import Hero from "../components/Hero"
 
-export default Home;
+
+const Home = () => {
+  return (
+    <div className="space-y-4">
+      <Hero />
+
+    </div>
+  )
+}
+
+export default Home
