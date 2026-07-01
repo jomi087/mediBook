@@ -1,7 +1,7 @@
-import Hero from "../components/Hero"
-import HowItWorks from "../components/HowItWorks"
-import SpecialityMenu from "../components/SpecialityMenu"
-
+import Hero from '../components/Hero';
+import HowItWorks from '../components/HowItWorks';
+import SpecialityMenu from '../components/SpecialityMenu';
+import TopDoctors from "../components/TopDoctors"
 
 const Home = () => {
   return (
@@ -9,9 +9,9 @@ const Home = () => {
       <Hero />
       <HowItWorks />
       <SpecialityMenu />
-
+      <TopDoctors />
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;

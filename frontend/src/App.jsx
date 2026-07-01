@@ -7,6 +7,7 @@ import Login from './pages/Login';
 import MyProfile from './pages/MyProfile';
 import MyAppointments from './pages/MyAppointments';
 import Layout from './layouts/Layout';
+import Appointment from "./pages/Appointment"
 
 const router = createBrowserRouter([
   {
@@ -20,6 +21,7 @@ const router = createBrowserRouter([
       { path: '/contact', element: <Contact /> },
       { path: '/my-profile', element: <MyProfile /> },
       { path: '/my-appointments', element: <MyAppointments /> },
+      { path: '/appointment/:docId', element: <Appointment /> },
       { path: '*', element: <p>Page Not Found</p> },
     ],
   },
