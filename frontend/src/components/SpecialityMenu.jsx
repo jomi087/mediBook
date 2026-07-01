@@ -1,4 +1,6 @@
 import { Link } from 'react-router-dom';
+
+// re-update the test case depending on how data is accessed
 import { specialityData } from '../assets/assets';
 
 const specialityMenu = () => {

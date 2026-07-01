@@ -6,7 +6,7 @@ import tailwindcss from '@tailwindcss/vite';
 export default defineConfig({
   plugins: [react(), tailwindcss()],
   test: {
-    globals: true,
-    environment: 'jsdom',
+    globals: true, // Makes describe, it, expect available globally ie, No need to import describe, it, expect, beforeEach, etc. from vitest
+    environment: 'jsdom', // Simulates a browser for React components
   },
 });
