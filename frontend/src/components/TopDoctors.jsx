@@ -1,10 +1,10 @@
-import { useContext } from "react"
-import { useNavigate } from "react-router-dom"
-import { AppContext } from "../context/AppContext"
+import { useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { AppContext } from '../context/AppContext';
 
 const TopDoctors = () => {
-  const navigate = useNavigate()
-  const { doctors } = useContext(AppContext)
+  const navigate = useNavigate();
+  const { doctors } = useContext(AppContext);
   return (
     <div className="flex flex-col items-center gap-5 text-gray-900 md:mx-10 pt-20">
       <h1 className="text-3xl font-medium">Top Doctors to Book</h1>
@@ -32,15 +32,15 @@ const TopDoctors = () => {
       </div>
       <button
         onClick={() => {
-          navigate("/doctors")
-          window.scrollTo(0, 0)
+          navigate('/doctors');
+          window.scrollTo(0, 0);
         }}
         className="rounded-full mt-10 bg-blue-50 text-gray-600 px-12 py-3"
       >
         More
       </button>
     </div>
-  )
-}
+  );
+};
 
-export default TopDoctors
+export default TopDoctors;

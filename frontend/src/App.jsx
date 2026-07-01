@@ -7,7 +7,7 @@ import Login from './pages/Login';
 import MyProfile from './pages/MyProfile';
 import MyAppointments from './pages/MyAppointments';
 import Layout from './layouts/Layout';
-import Appointment from "./pages/Appointment"
+import Appointment from './pages/Appointment';
 
 const router = createBrowserRouter([
   {

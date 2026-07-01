@@ -1,4 +1,4 @@
-import { assets } from "../assets/assets"
+import { assets } from '../assets/assets';
 
 const Hero = () => {
   return (
@@ -34,7 +34,7 @@ const Hero = () => {
         />
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Hero
+export default Hero;

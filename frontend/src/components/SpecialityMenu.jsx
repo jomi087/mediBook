@@ -1,5 +1,5 @@
-import { Link } from "react-router-dom"
-import { specialityData } from "../assets/assets"
+import { Link } from 'react-router-dom';
+import { specialityData } from '../assets/assets';
 
 const specialityMenu = () => {
   return (
@@ -31,7 +31,7 @@ const specialityMenu = () => {
         ))}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default specialityMenu
+export default specialityMenu;

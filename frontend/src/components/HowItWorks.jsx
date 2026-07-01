@@ -1,4 +1,4 @@
-import { steps } from "../assets/assets"
+import { steps } from '../assets/assets';
 
 const HowItWorks = () => {
   return (
@@ -61,7 +61,7 @@ const HowItWorks = () => {
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default HowItWorks
+export default HowItWorks;

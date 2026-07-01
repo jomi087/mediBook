@@ -1,8 +1,8 @@
-import { useNavigate } from "react-router-dom"
-import { assets } from "../assets/assets"
+import { useNavigate } from 'react-router-dom';
+import { assets } from '../assets/assets';
 
 const Banner = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   return (
     <div className="flex bg-cyan-600 rounded-lg px-6 sm:px-5 md:px-10 lg:px-8 md:mx-5 md:mt-10 ">
       {/* left side */}
@@ -17,10 +17,9 @@ const Banner = () => {
         </div>
         <button
           onClick={() => {
-              navigate("/login")
-              window.scrollTo(0,0)
-            }
-          }
+            navigate('/login');
+            window.scrollTo(0, 0);
+          }}
           className="bg-white text-sm sm:text-base text-gray-600 px-8 py-3 rounded-full mt-6 hover:scale-103 transition-all font-montserrat font-semibold"
         >
           Create Account
@@ -35,7 +34,7 @@ const Banner = () => {
         />
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Banner
+export default Banner;
