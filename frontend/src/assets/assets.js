@@ -1,12 +1,14 @@
-import profile_pic from './profile_pic.png';
 import logo from './logo.svg';
 import dropdown_icon from './dropdown_icon.svg';
-import group_profiles from './group_profiles.png'
 import arrow_icon from './arrow_icon.svg'
-import header_img from './header_img.png'
 import calender_icon from './calender_icon.svg'
 import user_icon from './user_icon.svg'
 import search_icon from './search_icon.svg'
+
+import profile_pic from './profile_pic.png';
+import group_profiles from './group_profiles.png'
+import header_img from './header_img.png'
+import appointment_img from './appointment_img.png'
 
 import Gastroenterologist from './Gastroenterologist.svg'
 import General_physician from './General_physician.svg'
@@ -31,6 +33,7 @@ import doc13 from './doc13.png'
 import doc14 from './doc14.png'
 import doc15 from './doc15.png'
 
+
 export const assets = {
   logo,
   profile_pic,
@@ -40,7 +43,8 @@ export const assets = {
   header_img,
   calender_icon,
   user_icon,
-  search_icon
+  search_icon,
+  appointment_img
 };
 
 export const steps = [
