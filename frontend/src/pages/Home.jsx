@@ -1,5 +1,6 @@
 import Hero from "../components/Hero"
 import HowItWorks from "../components/HowItWorks"
+import SpecialityMenu from "../components/SpecialityMenu"
 
 
 const Home = () => {
@@ -7,6 +8,7 @@ const Home = () => {
     <div className="space-y-4">
       <Hero />
       <HowItWorks />
+      <SpecialityMenu />
 
     </div>
   )

@@ -7,6 +7,12 @@ import header_img from './header_img.png'
 import calender_icon from './calender_icon.svg'
 import user_icon from './user_icon.svg'
 import search_icon from './search_icon.svg'
+import Gastroenterologist from './Gastroenterologist.svg'
+import General_physician from './General_physician.svg'
+import Gynecologist from './Gynecologist.svg'
+import Neurologist from './Neurologist.svg'
+import Pediatricians from './Pediatricians.svg'
+import Dermatologist from './Dermatologist.svg'
 
 export const assets = {
   logo,
@@ -43,3 +49,36 @@ export const steps = [
     iconUrl: assets.calender_icon,
   },
 ]
+
+export const specialityData = [
+    {
+        speciality: "General physician",
+        // slug: "general-physician",
+        image: General_physician,
+    },
+    {
+        speciality: "Gynecologist",
+        // slug: "gynecologist",
+        image: Gynecologist,
+    },
+    {
+        speciality: "Dermatologist",
+        // slug: "dermatologist",
+        image: Dermatologist,
+    },
+    {
+        speciality: "Pediatricians",
+        // slug: "pediatricians",
+        image: Pediatricians,
+    },
+    {
+        speciality: "Neurologist",
+        // slug: "neurologist",
+        image: Neurologist,
+    },
+    {
+        speciality: "Gastroenterologist",
+        // slug: "gastroenterologist",
+        image: Gastroenterologist,
+    },
+];
