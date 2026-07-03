@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { assets } from '../assets/assets';
+import Button from './ui/Button';
 
 const Banner = () => {
   const navigate = useNavigate();
@@ -15,15 +16,15 @@ const Banner = () => {
             Trusted Doctors
           </p>
         </div>
-        <button
+        <Button
           onClick={() => {
             navigate('/login');
             window.scrollTo(0, 0);
           }}
           className="bg-white text-sm sm:text-base text-gray-600 px-8 py-3 rounded-full mt-6 hover:scale-103 transition-all font-montserrat font-semibold"
         >
-          Create Account
-        </button>
+          Start Booking
+        </Button>
       </div>
       {/* right side */}
       <div className="hidden md:block md:w-1/2 lg:w-92.5 relative">

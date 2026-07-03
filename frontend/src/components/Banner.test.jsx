@@ -25,20 +25,20 @@ beforeEach(() => {
 });
 
 describe('Banner', () => {
-  it('should render the Create Account button', () => {
+  it('should render the Start Booking button', () => {
     // Arrange
     render(<Banner />);
 
     // Act
     const createAccountButton = screen.getByRole('button', {
-      name: 'Create Account',
+      name: 'Start Booking',
     });
 
     // Assert
     expect(createAccountButton).toBeInTheDocument();
   });
 
-  it('should navigate to login when Create Account is clicked', async () => {
+  it('should navigate to login when Start Booking is clicked', async () => {
     const user = userEvent.setup();
 
     // Arrange
@@ -46,7 +46,7 @@ describe('Banner', () => {
 
     // Act
     const createAccountButton = screen.getByRole('button', {
-      name: 'Create Account',
+      name: 'Start Booking',
     });
 
     await user.click(createAccountButton);
@@ -101,12 +101,12 @@ we'll configure it once in a global setup file (vitest.setup.js).
 The confusion:
 
 Initially, the test was only checking whether the
-"Create Account" button was rendered.
+"Start Booking" button was rendered.
 
 render(<Banner />);
 
 const createAccountButton = screen.getByRole("button", {
-  name: "Create Account",
+  name: "Start Booking",
 });
 
 expect(createAccountButton).toBeInTheDocument();
@@ -129,7 +129,7 @@ const Banner = () => {
   const navigate = useNavigate();
 
   return (
-    <button>Create Account</button>
+    <button>Start BookingCreate Account</button>
   );
 };
 
@@ -222,7 +222,7 @@ When to use each approach?
 
 Home
  ↓
-Click "Create Account"
+Click "Start Booking"
  ↓
 Login page renders
 

@@ -1,6 +1,7 @@
 import { NavLink, useNavigate } from 'react-router-dom';
 import { assets } from '../assets/assets';
 import { useState } from 'react';
+import Button from './ui/Button';
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -96,12 +97,12 @@ const Navbar = () => {
             </div>
           </div>
         ) : (
-          <button
+          <Button
             className="bg-primary text-white px-6 py-3 rounded-full font-light hover:bg-primary-hover hidden md:block"
             onClick={() => navigate('/login')}
           >
             Create Account
-          </button>
+          </Button>
         )}
       </div>
     </div>
