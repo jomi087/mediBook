@@ -129,7 +129,7 @@ const Banner = () => {
   const navigate = useNavigate();
 
   return (
-    <button>Start BookingCreate Account</button>
+    <button>Start Booking</button>
   );
 };
 
