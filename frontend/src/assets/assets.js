@@ -4,6 +4,8 @@ import arrow_icon from './arrow_icon.svg';
 import calender_icon from './calender_icon.svg';
 import user_icon from './user_icon.svg';
 import search_icon from './search_icon.svg';
+import menu_icon from './menu_icon.svg';
+import cross_icon from './cross_icon.png';
 
 import profile_pic from './profile_pic.png';
 import group_profiles from './group_profiles.png';
@@ -44,6 +46,8 @@ export const assets = {
   user_icon,
   search_icon,
   appointment_img,
+  menu_icon,
+  cross_icon,
 };
 
 export const steps = [
