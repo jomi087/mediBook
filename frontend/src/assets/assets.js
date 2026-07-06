@@ -47,7 +47,7 @@ export const assets = {
   search_icon,
   appointment_img,
   menu_icon,
-  cross_icon
+  cross_icon,
 };
 
 export const steps = [

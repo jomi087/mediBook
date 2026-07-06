@@ -4,23 +4,23 @@ import { useState } from 'react';
 import Button from '../ui/Button';
 
 const navLinks = [
-  { name: "HOME", path: "/" },
-  { name: "DOCTORS", path: "/doctors" },
-  { name: "ABOUT", path: "/about" },
-  { name: "CONTACT", path: "/contact" },
-]
+  { name: 'HOME', path: '/' },
+  { name: 'DOCTORS', path: '/doctors' },
+  { name: 'ABOUT', path: '/about' },
+  { name: 'CONTACT', path: '/contact' },
+];
 
 const Navbar = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
-  const [showMenu, setShowMenu] = useState(false)
-  const [token, setToken] = useState(true)
+  const [showMenu, setShowMenu] = useState(false);
+  const [token, setToken] = useState(true);
 
   return (
     <div className="flex items-center justify-between text-sm py-4 mb-5 border-b border-b-gray-400">
       <img
-        onClick={() => navigate("/")}
-        className={`${showMenu ? "invisible" : "visible"} w-33 cursor-pointer`}
+        onClick={() => navigate('/')}
+        className={`${showMenu ? 'invisible' : 'visible'} w-33 cursor-pointer`}
         src={assets.logo}
         alt="logo"
       />
@@ -31,7 +31,7 @@ const Navbar = () => {
             <NavLink
               to={path}
               className={(obj) =>
-                ` pb-1 transition-colors ${obj.isActive ? "border-b-2 border-primary text-primary" : "text-gray-700"}`
+                ` pb-1 transition-colors ${obj.isActive ? 'border-b-2 border-primary text-primary' : 'text-gray-700'}`
               }
             >
               {name}
@@ -52,13 +52,13 @@ const Navbar = () => {
             <div className="absolute top-0 right-0 pt-15 text-base font-medium text-gray-600/90 z-20 hidden group-hover:block">
               <div className="min-w-44 bg-stone-100 rounded-lg flex flex-col gap-4 p-4">
                 <p
-                  onClick={() => navigate("/my-profile")}
+                  onClick={() => navigate('/my-profile')}
                   className="hover:text-black cursor-pointer"
                 >
                   Profile
                 </p>
                 <p
-                  onClick={() => navigate("/my-appointments")}
+                  onClick={() => navigate('/my-appointments')}
                   className="hover:text-black cursor-pointer"
                 >
                   Appointments
@@ -75,7 +75,7 @@ const Navbar = () => {
         ) : (
           <Button
             className="bg-primary text-white px-6 py-3 rounded-full font-light hover:bg-primary-hover hidden md:block"
-            onClick={() => navigate("/login")}
+            onClick={() => navigate('/login')}
           >
             Sign-In
           </Button>
@@ -93,14 +93,14 @@ const Navbar = () => {
         <div
           onClick={() => setShowMenu(false)}
           className={`fixed inset-0 bg-black/40 z-20 transition-opacity duration-300 md:hidden
-            ${showMenu ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`}
+            ${showMenu ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}
         />
 
         {/* Mobile panel */}
         <div
           className={`fixed top-0 right-0 bottom-0 w-[70%] max-w-xs bg-white shadow-2xl
             flex flex-col transition-transform duration-300 z-30
-            ${showMenu ? "translate-x-0" : "translate-x-full"}`}
+            ${showMenu ? 'translate-x-0' : 'translate-x-full'}`}
         >
           <div className="flex items-center justify-between px-5 py-4 border-b border-gray-100">
             <img className="w-28" src={assets.logo} alt="logo" />
@@ -121,8 +121,8 @@ const Navbar = () => {
                   className={(obj) =>
                     `block px-3 py-3 rounded-lg font-mono! transition-colors ${
                       obj.isActive
-                        ? "bg-primary/10 text-primary font-semibold"
-                        : "text-gray-700 hover:bg-gray-50"
+                        ? 'bg-primary/10 text-primary font-semibold'
+                        : 'text-gray-700 hover:bg-gray-50'
                     }`
                   }
                 >
@@ -145,8 +145,8 @@ const Navbar = () => {
                 </div>
                 <p
                   onClick={() => {
-                    navigate("/my-profile")
-                    setShowMenu(false)
+                    navigate('/my-profile');
+                    setShowMenu(false);
                   }}
                   className="px-3 py-2.5 rounded-lg text-gray-700 hover:bg-gray-50 cursor-pointer"
                 >
@@ -154,8 +154,8 @@ const Navbar = () => {
                 </p>
                 <p
                   onClick={() => {
-                    navigate("/my-appointments")
-                    setShowMenu(false)
+                    navigate('/my-appointments');
+                    setShowMenu(false);
                   }}
                   className="px-3 py-2.5 rounded-lg text-gray-700 hover:bg-gray-50 cursor-pointer"
                 >
@@ -163,8 +163,8 @@ const Navbar = () => {
                 </p>
                 <p
                   onClick={() => {
-                    setToken(false)
-                    setShowMenu(false)
+                    setToken(false);
+                    setShowMenu(false);
                   }}
                   className="px-3 py-2.5 rounded-lg text-red-500 hover:bg-red-50 cursor-pointer"
                 >
@@ -175,8 +175,8 @@ const Navbar = () => {
               <Button
                 className="w-full bg-primary text-white py-3 rounded-full font-medium hover:bg-primary-hover"
                 onClick={() => {
-                  navigate("/login")
-                  setShowMenu(false)
+                  navigate('/login');
+                  setShowMenu(false);
                 }}
               >
                 Sign In
@@ -186,7 +186,7 @@ const Navbar = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;
