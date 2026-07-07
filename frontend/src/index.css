@@ -16,3 +16,12 @@
   --font-montserrat: 'Montserrat', sans-serif;
   --font-roboto: 'Roboto', sans-serif;
 }
+
+/*  scroll bar */
+::-webkit-scrollbar {
+  @apply hidden;
+}
+/* Reduce size of scroll bar */
+/* ::-webkit-scrollbar {
+  height: 6px;
+} */
