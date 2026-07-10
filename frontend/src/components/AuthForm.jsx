@@ -5,10 +5,10 @@ import useAuthForm from '../hooks/useAuthForm';
 
 const AuthForm = ({ mode }) => {
   const isLogin = mode === 'login';
-
   const { register, handleSubmit, errors, onSubmit } = useAuthForm(isLogin);
   return (
     <form
+      noValidate
       onSubmit={handleSubmit(onSubmit)}
       className="w-full max-w-sm bg-white border border-gray-200 rounded-2xl shadow-lg shadow-gray-200 p-8 flex flex-col gap-5"
     >
@@ -23,6 +23,7 @@ const AuthForm = ({ mode }) => {
       {/* Name */}
       {!isLogin && (
         <FormInput
+          id="name"
           label="Name"
           type="text"
           placeholder="Enter your name"
@@ -32,6 +33,7 @@ const AuthForm = ({ mode }) => {
       )}
       {/* Email */}
       <FormInput
+        id="email"
         label="Email"
         type="email"
         placeholder="you@example.com"
@@ -40,6 +42,7 @@ const AuthForm = ({ mode }) => {
       />
       {/* Password */}
       <FormInput
+        id="password"
         label="Password"
         type="password"
         placeholder="••••••••"

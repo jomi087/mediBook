@@ -1,9 +1,12 @@
-const FormInput = ({ label, type, placeholder, register, error }) => {
+const FormInput = ({ id, label, type, placeholder, register, error }) => {
   return (
     <div className="flex flex-col gap-1.5">
-      <label className="text-sm font-medium text-gray-700">{label}</label>
+      <label htmlFor={id} className="text-sm font-medium text-gray-700">
+        {label}
+      </label>
 
       <input
+        id={id}
         type={type}
         placeholder={placeholder}
         className={`border rounded-lg px-4 py-2.5 text-sm text-gray-700 outline-none
@@ -12,7 +15,12 @@ const FormInput = ({ label, type, placeholder, register, error }) => {
         {...register}
       />
 
-      {error && <p className="text-xs text-red-500">{error.message}</p>}
+      {/* {error && <p className="text-xs text-red-500">{error.message}</p>} */}
+      {error && (
+        <>
+          <p>{error.message}</p>
+        </>
+      )}
     </div>
   );
 };
