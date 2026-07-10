@@ -30,7 +30,8 @@ describe('Banner', () => {
     render(<Banner />);
 
     // Act
-    const createAccountButton = screen.getByRole('button', {  // button is a role
+    const createAccountButton = screen.getByRole('button', {
+      // button is a role
       name: 'Start Booking',
     });
 
