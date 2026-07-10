@@ -8,6 +8,7 @@ import MyProfile from './pages/MyProfile';
 import MyAppointments from './pages/MyAppointments';
 import Layout from './layouts/Layout';
 import Appointment from './pages/Appointment';
+import Signup from './pages/Signup';
 
 const router = createBrowserRouter([
   {
@@ -17,6 +18,7 @@ const router = createBrowserRouter([
       { path: '/doctors', element: <Doctors /> },
       { path: '/doctors/:speciality', element: <Doctors /> },
       { path: '/login', element: <Login /> },
+      { path: '/signup', element: <Signup /> },
       { path: '/about', element: <About /> },
       { path: '/contact', element: <Contact /> },
       { path: '/my-profile', element: <MyProfile /> },
@@ -25,7 +27,6 @@ const router = createBrowserRouter([
       { path: '*', element: <p>Page Not Found</p> },
     ],
   },
-  {},
 ]);
 
 function App() {

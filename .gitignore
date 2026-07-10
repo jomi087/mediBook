@@ -1,3 +1,4 @@
 node_modules/
 .env.*s
 .todo
+.future.txt
