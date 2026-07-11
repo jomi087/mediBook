@@ -10,6 +10,8 @@ import location_icon from './location_icon.svg';
 import phone_icon from './phone_icon.svg';
 import mail_icon from './mail_icon.svg';
 import contact_image from './contact_image.png';
+import clock_icon from './clock_icon.svg';
+import about_image from './about_image.png';
 
 import profile_pic from './profile_pic.png';
 import group_profiles from './group_profiles.png';
@@ -56,6 +58,8 @@ export const assets = {
   location_icon,
   phone_icon,
   mail_icon,
+  about_image,
+  clock_icon,
 };
 
 export const steps = [
