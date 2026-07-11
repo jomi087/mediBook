@@ -42,9 +42,7 @@ const Doctors = () => {
         onSelect={handleSpecialityClick}
       />
 
-      
       <div className="flex gap-6 mt-5 ">
-        
         {/* Desktop version */}
         <aside className="hidden md:block w-44 shrink-0">
           <p className="text-xs my-4 font-semibold text-gray-500 uppercase underline underline-offset-4 tracking-wider mb-3">
