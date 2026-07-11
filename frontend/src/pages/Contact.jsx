@@ -1,6 +1,6 @@
 import Button from '../components/ui/Button';
 import { CONTACT_CONTENT } from '../constants/contactContent';
-import { toast } from "sonner";
+import { toast } from 'sonner';
 
 const InfoRow = ({ icon, label, value }) => (
   <div className="flex items-start gap-3">
@@ -75,7 +75,7 @@ const Contact = () => {
           className="mt-2 bg-primary text-white text-sm font-medium px-8 py-3 rounded-full
           hover:bg-primary/90 active:scale-95 transition-all duration-200
           focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
-          onClick={() => toast.info("No Jobs available for now.")}
+          onClick={() => toast.info('No Jobs available for now.')}
         >
           {CONTACT_CONTENT.careers.button}
         </Button>
