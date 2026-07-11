@@ -6,6 +6,11 @@ import user_icon from './user_icon.svg';
 import search_icon from './search_icon.svg';
 import menu_icon from './menu_icon.svg';
 import cross_icon from './cross_icon.png';
+import location_icon from './location_icon.svg'
+import phone_icon from './phone_icon.svg'
+import mail_icon from './mail_icon.svg'
+import contact_image from './contact_image.png'
+
 
 import profile_pic from './profile_pic.png';
 import group_profiles from './group_profiles.png';
@@ -48,6 +53,10 @@ export const assets = {
   appointment_img,
   menu_icon,
   cross_icon,
+  contact_image,
+  location_icon,
+  phone_icon,
+  mail_icon
 };
 
 export const steps = [
