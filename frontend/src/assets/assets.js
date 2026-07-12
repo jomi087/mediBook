@@ -9,14 +9,16 @@ import cross_icon from './cross_icon.png';
 import location_icon from './location_icon.svg';
 import phone_icon from './phone_icon.svg';
 import mail_icon from './mail_icon.svg';
-import contact_image from './contact_image.png';
 import clock_icon from './clock_icon.svg';
-import about_image from './about_image.png';
+import verified_icon from './verified_icon.svg';
+import info_icon from './info_icon.svg';
 
 import profile_pic from './profile_pic.png';
 import group_profiles from './group_profiles.png';
 import header_img from './header_img.png';
 import appointment_img from './appointment_img.png';
+import about_image from './about_image.png';
+import contact_image from './contact_image.png';
 
 import Gastroenterologist from './Gastroenterologist.svg';
 import General_physician from './General_physician.svg';
@@ -60,6 +62,8 @@ export const assets = {
   mail_icon,
   about_image,
   clock_icon,
+  verified_icon,
+  info_icon,
 };
 
 export const steps = [
