@@ -1,4 +1,4 @@
-import { ERROR_MESSAGES } from '../constants/messages';
+import { ERROR_MESSAGES } from '../constants/messages.js';
 
 const allowedOrigins = [process.env.FRONTEND_URL, 'http://localhost:5173'];
 
