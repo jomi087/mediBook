@@ -117,13 +117,12 @@ describe('Appointment', () => {
     ).toBeInTheDocument();
   });
 
-  it('should render booking slots', () => {
+  it('should render booking slots', async () => {
     renderAppointment();
 
     expect(screen.getByText('Booking Slots')).toBeInTheDocument();
 
-    const timeSlots = screen.getAllByText(/^\d{1,2}:\d{2}\s?(AM|PM)$/i);
-
+    const timeSlots = await screen.findAllByText(/^\d{1,2}:\d{2}\s?(AM|PM)$/i);
     expect(timeSlots.length).toBeGreaterThan(0);
   });
 
@@ -145,10 +144,9 @@ describe('Appointment', () => {
 
     renderAppointment();
 
-    const slots = screen.getAllByRole('button', {
+    const slots = await screen.findAllByRole('button', {
       name: /\d{1,2}:\d{2}/i,
     });
-
     await user.click(slots[0]);
 
     expect(slots[0]).toHaveClass('bg-primary');
@@ -165,10 +163,9 @@ describe('Appointment', () => {
 
     expect(bookingButton).toBeDisabled();
 
-    const slots = screen.getAllByRole('button', {
+    const slots = await screen.findAllByRole('button', {
       name: /\d{1,2}:\d{2}/i,
     });
-
     await user.click(slots[0]);
 
     expect(
