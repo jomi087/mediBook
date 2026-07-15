@@ -1,10 +1,10 @@
 import express from 'express';
 import cors from 'cors';
-import { corsOptions } from './config/cors';
+import { corsOptions } from './config/cors.js';
 import cookieParser from 'cookie-parser';
-import { HTTP_STATUS } from './constants/httpStatus';
-import { SUCCESS_MESSAGES } from './constants/messages';
-import { sendSuccess } from './utils/apiResponse';
+import { HTTP_STATUS } from './constants/httpStatus.js';
+import { SUCCESS_MESSAGES } from './constants/messages.js';
+import { sendSuccess } from './utils/apiResponse.js';
 
 export const app = express();
 
