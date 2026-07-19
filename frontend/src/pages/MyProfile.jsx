@@ -6,13 +6,16 @@ import ProfileCard from '../components/profile/ProfileCard';
 import ContactInformation from '../components/profile/ContactInformation';
 import BasicInformation from '../components/profile/BasicInformation';
 import ErrorState from '../components/common/ErrorState';
+import Button from '../components/ui/Button.jsx';
+import { useNavigate } from 'react-router-dom';
 
 const MyProfile = () => {
   const [userData, setUserData] = useState(null);
   const [isEdit, setIsEdit] = useState(false);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
-
+  const navigate = useNavigate()
+  
   const { register, handleSubmit, errors, handleEdit, onSubmit } =
     useProfileForm({
       userData,
@@ -56,6 +59,23 @@ const MyProfile = () => {
         description={error}
         onRetry={fetchProfile}
         loading={loading}
+        actions={
+          <div className="flex gap-4">
+            <Button
+              className="bg-primary text-white px-6 py-2 rounded-xl hover:bg-primary/90"
+              onClick={fetchProfile}
+            >
+              Try Again
+            </Button>
+
+            <Button
+              className="bg-primary text-white px-6 py-2 rounded-xl hover:bg-primary/90"
+              onClick={() => navigate(-1)}
+            >
+              Go Back
+            </Button>
+          </div>
+        }
       />
     );
   }
