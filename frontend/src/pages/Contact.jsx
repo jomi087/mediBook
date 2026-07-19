@@ -1,5 +1,5 @@
 import Button from '../components/ui/Button';
-import { CONTACT_CONTENT } from '../constants/contactContent';
+import { CONTACT_CONTENT } from '../constants/contactConstants';
 import { toast } from 'sonner';
 
 const InfoRow = ({ icon, label, value }) => (

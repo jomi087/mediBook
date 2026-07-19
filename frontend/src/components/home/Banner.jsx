@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
-import { assets } from '../assets/assets';
-import Button from './ui/Button';
+import { assets } from '../../assets/assets';
+import Button from '../ui/Button';
 
 const Banner = () => {
   const navigate = useNavigate();

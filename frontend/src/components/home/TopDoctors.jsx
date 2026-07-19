@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { AppContext } from '../context/AppContext';
-import Button from './ui/Button';
+import { AppContext } from '../../context/AppContext';
+import Button from '../ui/Button';
 
 const TopDoctors = () => {
   const navigate = useNavigate();
