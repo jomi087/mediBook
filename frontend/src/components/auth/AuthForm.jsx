@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
-import Button from './ui/Button';
-import FormInput from './common/FormInput';
-import useAuthForm from '../hooks/useAuthForm';
+import FormInput from '../common/FormInput.jsx';
+import useAuthForm from '../../hooks/useAuthForm.js';
+import Button from '../ui/Button.jsx';
 
 const AuthForm = ({ mode }) => {
   const isLogin = mode === 'login';

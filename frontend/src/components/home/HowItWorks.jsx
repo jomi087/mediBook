@@ -1,4 +1,4 @@
-import { steps } from '../assets/assets';
+import { steps } from '../../assets/assets';
 
 const HowItWorks = () => {
   return (

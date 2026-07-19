@@ -1,8 +1,8 @@
-import Hero from '../components/Hero';
-import HowItWorks from '../components/HowItWorks';
-import SpecialityMenu from '../components/SpecialityMenu';
-import TopDoctors from '../components/TopDoctors';
-import Banner from '../components/Banner';
+import Hero from '../components/home/Hero';
+import HowItWorks from '../components/home/HowItWorks';
+import SpecialityMenu from '../components/home/SpecialityMenu';
+import TopDoctors from '../components/home/TopDoctors';
+import Banner from '../components/home/Banner';
 
 const Home = () => {
   return (

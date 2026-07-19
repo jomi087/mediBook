@@ -1,4 +1,4 @@
-import SpecialityMenu from './SpecialityMenu';
+import SpecialityMenu from '../components/home/SpecialityMenu.jsx';
 import { render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import '@testing-library/jest-dom/vitest';

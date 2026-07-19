@@ -1,4 +1,4 @@
-import { ABOUT_CONTENT } from '../constants/aboutContent';
+import { ABOUT_CONTENT } from '../constants/aboutConstants';
 
 const About = () => {
   return (

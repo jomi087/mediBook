@@ -200,6 +200,7 @@ const Appointment = () => {
             {docSlots.length > 0 &&
               docSlots[slotIndex].slots.map((slot, index) => (
                 <Button
+                  data-testid="time-slot"
                   className={`text-sm font-light shrink-0 cursor-pointer px-5 py-3 rounded-full text-center max-sm:text-xs max-sm:px-2 max-sm:py-2.5 max-sm:rounded-lg max-sm:shrink
                    ${
                      slot.time === slotTime
