@@ -1,4 +1,3 @@
-
 const ErrorState = ({
   title = 'Something went wrong',
   description = 'Please try again later.',

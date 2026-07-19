@@ -14,8 +14,8 @@ const MyProfile = () => {
   const [isEdit, setIsEdit] = useState(false);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
-  const navigate = useNavigate()
-  
+  const navigate = useNavigate();
+
   const { register, handleSubmit, errors, handleEdit, onSubmit } =
     useProfileForm({
       userData,
