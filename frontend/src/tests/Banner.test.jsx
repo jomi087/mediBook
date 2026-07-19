@@ -4,7 +4,7 @@
 //# 2) Why @testing-library/jest-dom/vitest?
 import '@testing-library/jest-dom/vitest';
 import { render, screen } from '@testing-library/react';
-import Banner from './Banner';
+import Banner from '../components/home/Banner.jsx';
 import userEvent from '@testing-library/user-event';
 
 //# 3) Why do we need mockNavigate? (see notes below)

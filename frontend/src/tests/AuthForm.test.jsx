@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom/vitest';
 import { MemoryRouter } from 'react-router-dom';
-import AuthForm from './AuthForm';
+import AuthForm from '../components/auth/AuthForm.jsx';
 import userEvent from '@testing-library/user-event';
 
 const renderAuthForm = (mode) => {

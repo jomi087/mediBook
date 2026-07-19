@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom/vitest';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import TopDoctors from './TopDoctors';
+import TopDoctors from '../components/home/TopDoctors.jsx';
 import { AppContext } from '../context/AppContext';
 
 const mockNavigate = vi.fn();

@@ -1,5 +1,6 @@
 import '@testing-library/jest-dom/vitest';
 import { render, screen } from '@testing-library/react';
+import { MemoryRouter } from 'react-router-dom';
 import userEvent from '@testing-library/user-event';
 import MyProfile from '../pages/MyProfile';
 import profileService from '../services/profileService';
@@ -34,7 +35,11 @@ beforeEach(() => {
 });
 
 const renderMyProfile = () => {
-  render(<MyProfile />);
+  render(
+    <MemoryRouter>
+      <MyProfile />
+    </MemoryRouter>
+  );
 };
 
 describe('MyProfile', () => {
@@ -233,6 +238,8 @@ describe('MyProfile', () => {
     expect(
       screen.getByRole('button', { name: 'Try Again' })
     ).toBeInTheDocument();
+
+    expect(screen.getByRole('button', { name: 'Go Back' })).toBeInTheDocument();
   });
 
   it('should retry loading profile when Try Again is clicked', async () => {

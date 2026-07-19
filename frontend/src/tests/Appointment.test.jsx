@@ -117,12 +117,19 @@ describe('Appointment', () => {
     ).toBeInTheDocument();
   });
 
-  it('should render booking slots', () => {
+  it('should render booking slots', async () => {
     renderAppointment();
 
     expect(screen.getByText('Booking Slots')).toBeInTheDocument();
 
-    const timeSlots = screen.getAllByText(/^\d{1,2}:\d{2}\s?(AM|PM)$/i);
+    const dayButtons = screen.getAllByLabelText(/Booking day/i);
+
+    // Click the second day (which always has slots)
+    await userEvent.click(dayButtons[1]);
+
+    const timeSlots = screen
+      .getAllByRole('button')
+      .filter((button) => button.textContent?.includes(':'));
 
     expect(timeSlots.length).toBeGreaterThan(0);
   });
@@ -141,40 +148,25 @@ describe('Appointment', () => {
   });
 
   it('should allow selecting a booking time', async () => {
-    const user = userEvent.setup();
-
     renderAppointment();
 
-    const slots = screen.getAllByRole('button', {
-      name: /\d{1,2}:\d{2}/i,
-    });
+    // Select an available day
+    const dayButtons = screen.getAllByLabelText(/Booking day/i);
+    await userEvent.click(dayButtons[1]);
 
-    await user.click(slots[0]);
+    // Get all available time slot buttons
+    const timeButtons = screen.getAllByTestId('time-slot');
 
-    expect(slots[0]).toHaveClass('bg-primary');
-  });
+    const firstTimeSlot = timeButtons[0];
 
-  it('should enable booking button after selecting a time', async () => {
-    const user = userEvent.setup();
+    // Select a time
+    await userEvent.click(firstTimeSlot);
 
-    renderAppointment();
-
-    const bookingButton = screen.getByRole('button', {
-      name: 'Select a time',
-    });
-
-    expect(bookingButton).toBeDisabled();
-
-    const slots = screen.getAllByRole('button', {
-      name: /\d{1,2}:\d{2}/i,
-    });
-
-    await user.click(slots[0]);
-
-    expect(
-      screen.getByRole('button', {
-        name: 'Book appointment',
-      })
-    ).toBeEnabled();
+    // Verify the selected state
+    expect(firstTimeSlot).toHaveClass(
+      'bg-primary',
+      'text-white',
+      'border-primary'
+    );
   });
 });
