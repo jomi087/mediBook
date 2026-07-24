@@ -1,7 +1,14 @@
 import Button from '../ui/Button';
 import Input from '../ui/Input';
 
-const ProfileCard = ({ userData, isEdit, register, errors, handleEdit }) => {
+const ProfileCard = ({
+  userData,
+  isEdit,
+  register,
+  errors,
+  handleEdit,
+  loading,
+}) => {
   return (
     <div className="lg:w-72 shrink-0">
       <div className="lg:sticky lg:top-10 bg-white border border-gray-200 rounded-2xl p-6 flex flex-col items-center text-center gap-4">
@@ -34,6 +41,7 @@ const ProfileCard = ({ userData, isEdit, register, errors, handleEdit }) => {
             key="edit-button"
             className="w-full bg-primary text-white py-2.5 rounded-full hover:bg-primary/90 active:scale-95 transition-all duration-200"
             onClick={handleEdit}
+            disabled={loading}
           >
             Edit Profile
           </Button>
