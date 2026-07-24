@@ -1,6 +1,7 @@
-import { ERROR_MESSAGES } from '../constants/messages.js';
+import { ERROR_MESSAGES } from '../constants/messages.constants.js';
+import { env } from './env.js';
 
-const allowedOrigins = [process.env.FRONTEND_URL, 'http://localhost:5173'];
+const allowedOrigins = [env.FRONTEND_URL, 'http://localhost:5173'];
 
 export const corsOptions = {
   origin: (origin, callback) => {
@@ -12,7 +13,6 @@ export const corsOptions = {
       callback(new Error(ERROR_MESSAGES.CORS_NOT_ALLOWED));
     }
   },
-  credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS', 'PATCH'],
-  allowedHeaders: ['Content-Type'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
 };

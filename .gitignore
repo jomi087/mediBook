@@ -1,6 +1,7 @@
 node_modules/
 .env*
 .env.*
-.todo
-.future.txt
 .vscode
+logs
+
+temp

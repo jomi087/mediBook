@@ -4,6 +4,13 @@ import { MemoryRouter } from 'react-router-dom';
 import AuthForm from '../components/auth/AuthForm.jsx';
 import userEvent from '@testing-library/user-event';
 
+vi.mock('../hooks/useAuth.js', () => ({
+  useAuth: () => ({
+    login: vi.fn(),
+    signup: vi.fn(),
+  }),
+}));
+
 const renderAuthForm = (mode) => {
   render(
     <MemoryRouter>

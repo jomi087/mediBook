@@ -8,9 +8,24 @@ import BasicInformation from '../components/profile/BasicInformation';
 import ErrorState from '../components/common/ErrorState';
 import Button from '../components/ui/Button.jsx';
 import { useNavigate } from 'react-router-dom';
+import { getErrorMessage } from '../services/errorHandler.js';
+import { useAuth } from '../hooks/useAuth.js';
 
 const MyProfile = () => {
-  const [userData, setUserData] = useState(null);
+  const { user } = useAuth();
+
+  const [userData, setUserData] = useState({
+    name: user?.name || '',
+    image: user?.image || '',
+    email: user?.email || '',
+    phone: '',
+    address: {
+      line1: '',
+      line2: '',
+    },
+    gender: '',
+    dob: '',
+  });
   const [isEdit, setIsEdit] = useState(false);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -31,10 +46,7 @@ const MyProfile = () => {
       const res = await profileService.getProfile();
       setUserData(res.data);
     } catch (err) {
-      const errMsg =
-        err.response?.data?.message ?? err.message ?? 'Failed to load profile.';
-
-      setError(errMsg);
+      setError(getErrorMessage(err));
     } finally {
       setLoading(false);
     }
@@ -44,13 +56,13 @@ const MyProfile = () => {
     fetchProfile();
   }, [fetchProfile]);
 
-  if (loading) {
-    return (
-      <div className="min-h-[70vh] flex items-center justify-center">
-        <Spinner />
-      </div>
-    );
-  }
+  // if (loading) {
+  //   return (
+  //     <div className="min-h-[70vh] flex items-center justify-center">
+  //       <Spinner />
+  //     </div>
+  //   );
+  // }
 
   if (error) {
     return (
@@ -90,26 +102,33 @@ const MyProfile = () => {
           register={register}
           errors={errors}
           handleEdit={handleEdit}
+          loading={loading}
         />
 
         {/* Right: details */}
-        <div className="flex-1 flex flex-col gap-6">
-          {/* Contact information */}
-          <ContactInformation
-            userData={userData}
-            isEdit={isEdit}
-            register={register}
-            errors={errors}
-          />
+        {loading ? (
+          <div className="min-h-[70vh] flex items-center flex-1 justify-center">
+            <Spinner />
+          </div>
+        ) : (
+          <div className="flex-1 flex flex-col gap-6">
+            {/* Contact information */}
+            <ContactInformation
+              userData={userData}
+              isEdit={isEdit}
+              register={register}
+              errors={errors}
+            />
 
-          {/* Basic information */}
-          <BasicInformation
-            userData={userData}
-            isEdit={isEdit}
-            register={register}
-            errors={errors}
-          />
-        </div>
+            {/* Basic information */}
+            <BasicInformation
+              userData={userData}
+              isEdit={isEdit}
+              register={register}
+              errors={errors}
+            />
+          </div>
+        )}
       </div>
     </form>
   );
