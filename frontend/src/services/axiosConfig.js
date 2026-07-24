@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { HTTP_STATUS } from '../constants/httpStatus.js'
+import { HTTP_STATUS } from '../constants/httpStatus.js';
 import { tokenStorage } from '../utils/tokenStorage.js';
 
 const axiosInstance = axios.create({

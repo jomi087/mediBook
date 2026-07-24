@@ -61,7 +61,7 @@ describe('MyProfile', () => {
     // Wait for the async state update to finish
     await screen.findByText(mockUser.name);
   });
-  
+
   it('should render profile information in view mode', async () => {
     renderMyProfile();
 

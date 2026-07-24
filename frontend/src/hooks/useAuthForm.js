@@ -6,15 +6,13 @@ import { useNavigate } from 'react-router-dom';
 import { useAuth } from './useAuth.js';
 import { getErrorMessage } from '../services/errorHandler.js';
 
-
 const schemaMap = {
   login: loginSchema,
   signup: signupSchema,
 };
 
-
 const useAuthForm = (mode) => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const { login, signup } = useAuth();
   const actionMap = { login, signup };
 
@@ -43,7 +41,6 @@ const useAuthForm = (mode) => {
       } else {
         navigate('/');
       }
-
     } catch (err) {
       toast.error(getErrorMessage(err));
     }

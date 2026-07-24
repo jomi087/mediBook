@@ -5,7 +5,7 @@ const { AUTH } = API_ROUTES;
 
 class AuthService {
   async check() {
-    return axiosInstance.get(AUTH.CHECK)
+    return axiosInstance.get(AUTH.CHECK);
   }
 
   /**
@@ -20,7 +20,7 @@ class AuthService {
    *     role: string;
    *   };
    * }>>}
-  */
+   */
 
   async signup(registrationData) {
     return axiosInstance.post(AUTH.SIGNUP, registrationData);
@@ -38,12 +38,11 @@ class AuthService {
    *     role: string;
    *   };
    * }>>}
-  */
+   */
 
   async signin(credentials) {
     return axiosInstance.post(AUTH.SIGNIN, credentials);
   }
-
 }
 
 export default new AuthService();

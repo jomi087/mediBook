@@ -1,4 +1,4 @@
-import { STORAGE_KEYS } from "../constants/storageConstants.js";
+import { STORAGE_KEYS } from '../constants/storageConstants.js';
 
 export const tokenStorage = {
   get() {
