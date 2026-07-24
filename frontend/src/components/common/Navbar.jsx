@@ -2,6 +2,8 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import { assets } from '../../assets/assets';
 import { useState } from 'react';
 import Button from '../ui/Button';
+import { useAuth } from '../../hooks/useAuth.js';
+import NavbarAuthSkeleton from '../auth/AuthSectionSkeleton.jsx';
 
 const navLinks = [
   { name: 'HOME', path: '/' },
@@ -12,9 +14,8 @@ const navLinks = [
 
 const Navbar = () => {
   const navigate = useNavigate();
-
   const [showMenu, setShowMenu] = useState(false);
-  const [token, setToken] = useState(true);
+  const { logout, user, isAuthenticated, loading } = useAuth();
 
   return (
     <div className="flex items-center justify-between text-sm py-4 mb-5 border-b border-b-gray-400">
@@ -41,12 +42,14 @@ const Navbar = () => {
       </ul>
 
       <div className="flex items-center gap-4">
-        {token ? (
+        {loading ? (
+          <NavbarAuthSkeleton />
+        ) : isAuthenticated ? (
           <div className="hidden md:flex items-center gap-2 cursor-pointer group relative">
             <img
               className="w-9.5 rounded-full"
-              src={assets.profile_pic}
-              alt="profile pic"
+              src={user.image}
+              alt={user.name}
             />
             <img className="w-2.5" src={assets.dropdown_icon} alt="nav-icon" />
             <div className="absolute top-0 right-0 pt-15 text-base font-medium text-gray-600/90 z-20 hidden group-hover:block">
@@ -63,10 +66,7 @@ const Navbar = () => {
                 >
                   Appointments
                 </p>
-                <p
-                  onClick={() => setToken(false)}
-                  className="hover:text-black cursor-pointer"
-                >
+                <p onClick={logout} className="hover:text-black cursor-pointer">
                   logout
                 </p>
               </div>
@@ -133,13 +133,13 @@ const Navbar = () => {
           </ul>
 
           <div className="mt-auto px-3 py-4 border-t border-gray-100">
-            {token ? (
+            {isAuthenticated ? (
               <div className="flex flex-col gap-1">
                 <div className="flex items-center gap-3 px-3 pb-3">
                   <img
                     className="w-10 h-10 rounded-full object-cover"
-                    src={assets.profile_pic}
-                    alt="profile pic"
+                    src={user.image}
+                    alt={user.name}
                   />
                   <p className="text-sm text-gray-500">My Account</p>
                 </div>
@@ -163,7 +163,7 @@ const Navbar = () => {
                 </p>
                 <p
                   onClick={() => {
-                    setToken(false);
+                    logout();
                     setShowMenu(false);
                   }}
                   className="px-3 py-2.5 rounded-lg text-red-500 hover:bg-red-50 cursor-pointer"

@@ -9,6 +9,7 @@ import MyAppointments from './pages/MyAppointments';
 import Layout from './layouts/Layout';
 import Appointment from './pages/Appointment';
 import Signup from './pages/Signup';
+import ProtectedRoute from './routes/ProtectedRoute.jsx';
 
 const router = createBrowserRouter([
   {
@@ -21,8 +22,19 @@ const router = createBrowserRouter([
       { path: '/signup', element: <Signup /> },
       { path: '/about', element: <About /> },
       { path: '/contact', element: <Contact /> },
-      { path: '/my-profile', element: <MyProfile /> },
-      { path: '/my-appointments', element: <MyAppointments /> },
+      {
+        element: <ProtectedRoute />,
+        children: [
+          {
+            path: '/my-profile',
+            element: <MyProfile />,
+          },
+          {
+            path: '/my-appointments',
+            element: <MyAppointments />,
+          },
+        ],
+      },
       { path: '/appointment/:docId', element: <Appointment /> },
       { path: '*', element: <p>Page Not Found</p> },
     ],
