@@ -1,6 +1,7 @@
 import { memo, useContext } from 'react';
 import { AppContext } from '../context/AppContext';
 import { Link, useNavigate } from 'react-router-dom';
+import Button from './ui/Button.jsx';
 
 const RelatedDoctors = ({ docId, speciality }) => {
   const { doctors } = useContext(AppContext);
@@ -47,7 +48,7 @@ const RelatedDoctors = ({ docId, speciality }) => {
           </Link>
         ))}
       </div>
-      <button
+      <Button
         onClick={() => {
           navigate('/doctors');
           window.scrollTo(0, 0);
@@ -55,7 +56,7 @@ const RelatedDoctors = ({ docId, speciality }) => {
         className="rounded-full mt-10 bg-blue-50 text-gray-600 px-12 py-3 max-sm:mt-4 max-sm:px-8 max-sm:py-2.5 max-sm:text-sm"
       >
         More
-      </button>
+      </Button>
     </div>
   );
 };
