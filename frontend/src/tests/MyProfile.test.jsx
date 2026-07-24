@@ -7,6 +7,16 @@ import profileService from '../services/profileService';
 
 vi.mock('../services/profileService');
 
+vi.mock('../hooks/useAuth.js', () => ({
+  useAuth: () => ({
+    user: {
+      name: 'John Doe',
+      image: 'fake-image',
+      email: 'john@gmail.com',
+    },
+  }),
+}));
+
 vi.mock('sonner', () => ({
   toast: {
     error: vi.fn(),
@@ -43,12 +53,15 @@ const renderMyProfile = () => {
 };
 
 describe('MyProfile', () => {
-  it('should show loading spinner initially', () => {
+  it('should show loading spinner initially', async () => {
     renderMyProfile();
 
     expect(screen.getByText('Loading...')).toBeInTheDocument();
-  });
 
+    // Wait for the async state update to finish
+    await screen.findByText(mockUser.name);
+  });
+  
   it('should render profile information in view mode', async () => {
     renderMyProfile();
 
@@ -223,9 +236,13 @@ describe('MyProfile', () => {
   });
 
   it('should render ErrorState when profile loading fails', async () => {
-    profileService.getProfile.mockRejectedValueOnce(
-      new Error('Failed to load profile.')
-    );
+    profileService.getProfile.mockRejectedValueOnce({
+      response: {
+        data: {
+          message: 'Failed to load profile.',
+        },
+      },
+    });
 
     renderMyProfile();
 
@@ -236,33 +253,43 @@ describe('MyProfile', () => {
     expect(screen.getByText('Failed to load profile.')).toBeInTheDocument();
 
     expect(
-      screen.getByRole('button', { name: 'Try Again' })
+      screen.getByRole('button', {
+        name: 'Try Again',
+      })
     ).toBeInTheDocument();
 
-    expect(screen.getByRole('button', { name: 'Go Back' })).toBeInTheDocument();
+    expect(
+      screen.getByRole('button', {
+        name: 'Go Back',
+      })
+    ).toBeInTheDocument();
   });
 
   it('should retry loading profile when Try Again is clicked', async () => {
     const user = userEvent.setup();
 
     // First request fails
-    profileService.getProfile.mockRejectedValueOnce(
-      new Error('Failed to load profile.')
-    );
+    profileService.getProfile.mockRejectedValueOnce({
+      response: {
+        data: {
+          message: 'Failed to load profile.',
+        },
+      },
+    });
 
     renderMyProfile();
 
-    // Wait for ErrorState to appear
+    // Wait for ErrorState
     expect(
       await screen.findByText('Unable to load profile')
     ).toBeInTheDocument();
 
-    // Next request succeeds
+    // Second request succeeds
     profileService.getProfile.mockResolvedValueOnce({
       data: mockUser,
     });
 
-    // Click Retry
+    // Retry
     await user.click(
       screen.getByRole('button', {
         name: 'Try Again',
