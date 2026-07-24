@@ -3,33 +3,26 @@ import { AppError } from '../errors/AppError.js';
 import { HTTP_STATUS } from '../constants/http.constants.js';
 import { ERROR_MESSAGES } from '../constants/messages.constants.js';
 import { logger } from '../config/logger.js';
-import { sendError } from '../utils/apiResponse.js'
-
+import { sendError } from '../utils/apiResponse.js';
 
 export const errorHandler = (err, req, res, _next) => {
-
   //validation / validation error
   if (err instanceof ZodError) {
-    const errors = err.issues.map(issue => ({
-      field: issue.path.join("."),
-      message: issue.message
-    }))
+    const errors = err.issues.map((issue) => ({
+      field: issue.path.join('.'),
+      message: issue.message,
+    }));
     return sendError(
       res,
       HTTP_STATUS.BAD_REQUEST,
       ERROR_MESSAGES.VALIDATION_FAILED,
       errors
-    )
+    );
   }
 
   // expected / custom errors
   if (err instanceof AppError) {
-
-    return sendError(
-      res,
-      err.statusCode,
-      err.message
-    )
+    return sendError(res, err.statusCode, err.message);
   }
 
   // Unexpected errors
@@ -42,14 +35,9 @@ export const errorHandler = (err, req, res, _next) => {
     clientMessage,
     error: {
       message: err instanceof Error ? err.message : String(err),
-      stack: err instanceof Error ? err.stack : "Not available",
+      stack: err instanceof Error ? err.stack : 'Not available',
     },
   });
 
-
-  return sendError(
-    res,
-    statusCode,
-    clientMessage,
-  )
+  return sendError(res, statusCode, clientMessage);
 };

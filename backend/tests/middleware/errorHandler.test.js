@@ -3,7 +3,7 @@ import { errorHandler } from '../../middleware/errorhandler.js';
 import { AppError } from '../../errors/AppError.js';
 import { HTTP_STATUS } from '../../constants/http.constants.js';
 import { ERROR_MESSAGES } from '../../constants/messages.constants.js';
-import { jest } from "@jest/globals";
+import { jest } from '@jest/globals';
 
 describe('errorHandler middleware', () => {
   let req;
@@ -82,9 +82,7 @@ describe('errorHandler middleware', () => {
     errorHandler(error, req, res, next);
 
     // Assert
-    expect(res.status).toHaveBeenCalledWith(
-      HTTP_STATUS.INTERNAL_SERVER_ERROR
-    );
+    expect(res.status).toHaveBeenCalledWith(HTTP_STATUS.INTERNAL_SERVER_ERROR);
 
     expect(res.json).toHaveBeenCalledWith({
       success: false,

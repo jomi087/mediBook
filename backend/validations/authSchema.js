@@ -1,18 +1,26 @@
 import { z } from 'zod';
-import { NAME_MAX_LENGTH, NAME_MIN_LENGTH, PASSWORD_MAX_LENGTH, PASSWORD_MIN_LENGTH, PASSWORD_REGEX } from '../constants/auth.constants.js';
+import {
+  NAME_MAX_LENGTH,
+  NAME_MIN_LENGTH,
+  PASSWORD_MAX_LENGTH,
+  PASSWORD_MIN_LENGTH,
+  PASSWORD_REGEX,
+} from '../constants/auth.constants.js';
 
 export const signinSchema = z.object({
-  email: z
-    .string()
-    .trim()
-    .min(1, 'Email is required')
-    .email('Invalid email'),
+  email: z.string().trim().min(1, 'Email is required').email('Invalid email'),
 
   password: z
     .string()
     .min(1, 'Password is required')
-    .min(PASSWORD_MIN_LENGTH, `Password must be at least ${PASSWORD_MIN_LENGTH} characters`)
-    .max(PASSWORD_MAX_LENGTH, `Password cannot exceed ${PASSWORD_MAX_LENGTH} characters`)
+    .min(
+      PASSWORD_MIN_LENGTH,
+      `Password must be at least ${PASSWORD_MIN_LENGTH} characters`
+    )
+    .max(
+      PASSWORD_MAX_LENGTH,
+      `Password cannot exceed ${PASSWORD_MAX_LENGTH} characters`
+    )
     .regex(
       PASSWORD_REGEX,
       'Password must contain uppercase, lowercase, number and special character'

@@ -1,5 +1,4 @@
-import AccountModel from "../model/accountModel.js";
-
+import AccountModel from '../model/accountModel.js';
 
 export class AuthRepository {
   #mapAccount(account) {
@@ -17,28 +16,26 @@ export class AuthRepository {
   }
 
   async isRegisterByEmail(email) {
-    const account = await AccountModel.findOne({ email })
+    const account = await AccountModel.findOne({ email });
     return !!account;
   }
 
   async registerAccount(payload) {
     let account = await AccountModel.create(payload);
-    return this.#mapAccount(account)
+    return this.#mapAccount(account);
   }
 
   async fetchAccountByEmail(email) {
     // password select is false (by default)
-    const account = await AccountModel.findOne({ email }).select('+password')
+    const account = await AccountModel.findOne({ email }).select('+password');
     if (!account) return null;
     return { password: account.password, ...this.#mapAccount(account) };
   }
 
   async fetchAccountById(id) {
     // password select is false (by default)
-    const account = await AccountModel.findById(id)
+    const account = await AccountModel.findById(id);
     if (!account) return null;
     return this.#mapAccount(account);
   }
-
-
 }

@@ -11,8 +11,8 @@ const authService = new AuthService(authRepository);
 const authController = new AuthController(authService);
 const router = Router();
 
-router.get('/me', authenticate , authController.accountInfo)
-router.post('/signup', validateRequest(signupSchema), authController.signup)
-router.post('/signin', validateRequest(signinSchema), authController.signin)
+router.get('/me', authenticate, authController.accountInfo);
+router.post('/signup', validateRequest(signupSchema), authController.signup);
+router.post('/signin', validateRequest(signinSchema), authController.signin);
 
-export default router
+export default router;

@@ -43,10 +43,7 @@ export const logger = createLogger({
   ],
 });
 
-
-
 if (!isProd && !isTest) {
-
   // Add console logging only outside production.
   // Even if we remove `!isTest` from `if (!isProd && !isTest)`, nothing will be logged
   // because `silent: isTest` suppresses all log output during tests.
@@ -59,9 +56,9 @@ if (!isProd && !isTest) {
         format.colorize(),
         format.timestamp(),
         format.errors({ stack: true }),
-        format.prettyPrint(),
+        format.prettyPrint()
       ),
-    }),
+    })
   );
 }
 

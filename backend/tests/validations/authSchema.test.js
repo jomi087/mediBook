@@ -1,46 +1,46 @@
-import { signupSchema, signinSchema } from "../../validations/authSchema.js";
+import { signupSchema, signinSchema } from '../../validations/authSchema.js';
 
-describe("Signup Schema", () => {
+describe('Signup Schema', () => {
   const validData = {
-    name: "John Doe",
-    email: "john@example.com",
-    password: "Password@123",
+    name: 'John Doe',
+    email: 'john@example.com',
+    password: 'Password@123',
   };
 
-  test("should validate correct signup data", () => {
+  test('should validate correct signup data', () => {
     const result = signupSchema.safeParse(validData);
 
     expect(result.success).toBe(true);
   });
 
-  test("should reject invalid name", () => {
+  test('should reject invalid name', () => {
     const result = signupSchema.safeParse({
       ...validData,
-      name: "J",
+      name: 'J',
     });
 
     expect(result.success).toBe(false);
   });
 
-  test("should reject invalid email", () => {
+  test('should reject invalid email', () => {
     const result = signupSchema.safeParse({
       ...validData,
-      email: "invalid-email",
+      email: 'invalid-email',
     });
 
     expect(result.success).toBe(false);
   });
 
-  test("should reject weak password", () => {
+  test('should reject weak password', () => {
     const result = signupSchema.safeParse({
       ...validData,
-      password: "password",
+      password: 'password',
     });
 
     expect(result.success).toBe(false);
   });
 
-  test("should reject missing fields", () => {
+  test('should reject missing fields', () => {
     const result = signupSchema.safeParse({});
 
     expect(result.success).toBe(false);
@@ -48,37 +48,37 @@ describe("Signup Schema", () => {
   });
 });
 
-describe("Signin Schema", () => {
+describe('Signin Schema', () => {
   const validData = {
-    email: "john@example.com",
-    password: "Password@123",
+    email: 'john@example.com',
+    password: 'Password@123',
   };
 
-  test("should validate correct signin data", () => {
+  test('should validate correct signin data', () => {
     const result = signinSchema.safeParse(validData);
 
     expect(result.success).toBe(true);
   });
 
-  test("should reject invalid email", () => {
+  test('should reject invalid email', () => {
     const result = signinSchema.safeParse({
       ...validData,
-      email: "abc",
+      email: 'abc',
     });
 
     expect(result.success).toBe(false);
   });
 
-  test("should reject weak password", () => {
+  test('should reject weak password', () => {
     const result = signinSchema.safeParse({
       ...validData,
-      password: "123",
+      password: '123',
     });
 
     expect(result.success).toBe(false);
   });
 
-  test("should reject empty object", () => {
+  test('should reject empty object', () => {
     const result = signinSchema.safeParse({});
 
     expect(result.success).toBe(false);

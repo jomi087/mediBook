@@ -1,10 +1,6 @@
 import 'dotenv/config';
 
-import {
-  connectTestDB,
-  clearTestDB,
-  disconnectTestDB,
-} from './mongodb.js';
+import { connectTestDB, clearTestDB, disconnectTestDB } from './mongodb.js';
 
 beforeAll(async () => {
   await connectTestDB();

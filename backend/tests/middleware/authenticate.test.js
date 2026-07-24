@@ -1,12 +1,12 @@
-import jwt from "jsonwebtoken";
-import { jest } from "@jest/globals";
+import jwt from 'jsonwebtoken';
+import { jest } from '@jest/globals';
 
-import { authenticate } from "../../middleware/authenticate.js";
-import { HTTP_STATUS } from "../../constants/http.constants.js";
-import { ERROR_MESSAGES } from "../../constants/messages.constants.js";
-import { env } from "../../config/env.js";
+import { authenticate } from '../../middleware/authenticate.js';
+import { HTTP_STATUS } from '../../constants/http.constants.js';
+import { ERROR_MESSAGES } from '../../constants/messages.constants.js';
+import { env } from '../../config/env.js';
 
-describe("authenticate middleware", () => {
+describe('authenticate middleware', () => {
   let req;
   let res;
   let next;
@@ -21,11 +21,11 @@ describe("authenticate middleware", () => {
     next = jest.fn();
   });
 
-  test("should authenticate valid token", () => {
+  test('should authenticate valid token', () => {
     const token = jwt.sign(
       {
-        accountId: "123",
-        role: "patient",
+        accountId: '123',
+        role: 'patient',
       },
       env.JWT_SECRET
     );
@@ -35,15 +35,15 @@ describe("authenticate middleware", () => {
     authenticate(req, res, next);
 
     expect(req.user).toMatchObject({
-      accountId: "123",
-      role: "patient",
+      accountId: '123',
+      role: 'patient',
     });
 
     expect(next).toHaveBeenCalledTimes(1);
     expect(next).toHaveBeenCalledWith();
   });
 
-  test("should reject missing authorization header", () => {
+  test('should reject missing authorization header', () => {
     authenticate(req, res, next);
 
     expect(next).toHaveBeenCalledWith(
@@ -54,8 +54,8 @@ describe("authenticate middleware", () => {
     );
   });
 
-  test("should reject invalid authorization format", () => {
-    req.headers.authorization = "Basic abc123";
+  test('should reject invalid authorization format', () => {
+    req.headers.authorization = 'Basic abc123';
 
     authenticate(req, res, next);
 
@@ -67,8 +67,8 @@ describe("authenticate middleware", () => {
     );
   });
 
-  test("should reject invalid token", () => {
-    req.headers.authorization = "Bearer invalid.token.value";
+  test('should reject invalid token', () => {
+    req.headers.authorization = 'Bearer invalid.token.value';
 
     authenticate(req, res, next);
 
@@ -80,11 +80,11 @@ describe("authenticate middleware", () => {
     );
   });
 
-  test("should reject expired token", () => {
+  test('should reject expired token', () => {
     const expiredToken = jwt.sign(
       {
-        accountId: "123",
-        role: "patient",
+        accountId: '123',
+        role: 'patient',
       },
       env.JWT_SECRET,
       {
@@ -104,13 +104,13 @@ describe("authenticate middleware", () => {
     );
   });
 
-  test("should reject token signed with wrong secret", () => {
+  test('should reject token signed with wrong secret', () => {
     const token = jwt.sign(
       {
-        accountId: "123",
-        role: "patient",
+        accountId: '123',
+        role: 'patient',
       },
-      "wrong-secret"
+      'wrong-secret'
     );
 
     req.headers.authorization = `Bearer ${token}`;

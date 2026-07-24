@@ -4,15 +4,18 @@ import { ERROR_MESSAGES } from '../constants/messages.constants.js';
 import { ROLES } from '../constants/role.constants.js';
 import jwt from 'jsonwebtoken';
 import { AppError } from '../errors/AppError.js';
-import { ACCESS_TOKEN_EXPIRY, SALT_ROUNDS } from '../constants/auth.constants.js';
+import {
+  ACCESS_TOKEN_EXPIRY,
+  SALT_ROUNDS,
+} from '../constants/auth.constants.js';
 import { env } from '../config/env.js';
 
 export class AuthService {
   /**
-    * @param {import("../repositories/AuthRepository.js").AuthRepository} authRepository
-  */
+   * @param {import("../repositories/AuthRepository.js").AuthRepository} authRepository
+   */
   constructor(authRepository) {
-    this.authRepository = authRepository
+    this.authRepository = authRepository;
   }
 
   #generateAccessToken(payload) {
@@ -34,8 +37,8 @@ export class AuthService {
       email: account.email,
       name: account.name,
       image: account.image,
-      role: account.role
-    }
+      role: account.role,
+    };
   }
 
   async signup(name, email, password) {
@@ -56,10 +59,10 @@ export class AuthService {
 
     const payload = {
       accountId: newAccount.id,
-      role: newAccount.role
-    }
+      role: newAccount.role,
+    };
 
-    const accessToken = this.#generateAccessToken(payload)
+    const accessToken = this.#generateAccessToken(payload);
 
     return {
       accessToken,
@@ -68,8 +71,8 @@ export class AuthService {
         email: newAccount.email,
         name: newAccount.name,
         image: newAccount.image,
-        role: newAccount.role
-      }
+        role: newAccount.role,
+      },
     };
   }
 
@@ -77,21 +80,27 @@ export class AuthService {
     const account = await this.authRepository.fetchAccountByEmail(email);
 
     if (!account) {
-      throw new AppError(HTTP_STATUS.NOT_FOUND, ERROR_MESSAGES.ACCOUNT_NOT_FOUND);
+      throw new AppError(
+        HTTP_STATUS.NOT_FOUND,
+        ERROR_MESSAGES.ACCOUNT_NOT_FOUND
+      );
     }
 
     const passwordMatch = await bcrypt.compare(password, account.password);
 
     if (!passwordMatch) {
-      throw new AppError(HTTP_STATUS.UNAUTHORIZED, ERROR_MESSAGES.INVALID_CREDENTIALS);
+      throw new AppError(
+        HTTP_STATUS.UNAUTHORIZED,
+        ERROR_MESSAGES.INVALID_CREDENTIALS
+      );
     }
 
     const payload = {
       accountId: account.id,
-      role: account.role
-    }
+      role: account.role,
+    };
 
-    const accessToken = this.#generateAccessToken(payload)
+    const accessToken = this.#generateAccessToken(payload);
 
     return {
       accessToken,
@@ -100,7 +109,7 @@ export class AuthService {
         email: account.email,
         name: account.name,
         image: account.image,
-        role: account.role
+        role: account.role,
       },
     };
   }

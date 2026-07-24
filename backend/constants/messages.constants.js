@@ -31,9 +31,8 @@ export const ERROR_MESSAGES = {
   //Payment
 
   //common
-  INTERNAL_SERVER_ERROR: "Internal server error",
+  INTERNAL_SERVER_ERROR: 'Internal server error',
   SOMETHING_WENT_WRONG: 'Something went wrong',
-  VALIDATION_FAILED: "Validation failed",
+  VALIDATION_FAILED: 'Validation failed',
   CORS_NOT_ALLOWED: 'Not allowed by CORS',
-
 };

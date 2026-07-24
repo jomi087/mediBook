@@ -1,13 +1,13 @@
 export default {
   // Use the Node.js runtime instead of a browser-like (jsdom) environment.
   // This is appropriate for backend applications like Express APIs.
-  testEnvironment: "node",
+  testEnvironment: 'node',
   testTimeout: 10000,
 
   // Run this file before every test suite.
   // This lets us keep common setup (like database connection , dotenv.config and global hooks)
   // in one place instead of importing the same setup code in every test file.
-  setupFilesAfterEnv: ["<rootDir>/tests/setup/jest.setup.js"],
+  setupFilesAfterEnv: ['<rootDir>/tests/setup/jest.setup.js'],
 
   // Generate a code coverage report after running the tests.
   // The report shows how much of the application's code is exercised by tests.

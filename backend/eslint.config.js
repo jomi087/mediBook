@@ -8,7 +8,7 @@ export default defineConfig([
     files: ['**/*.{js,mjs,cjs}'],
     plugins: {
       js,
-      import: importPlugin
+      import: importPlugin,
     },
     extends: ['js/recommended'],
     languageOptions: {

@@ -1,30 +1,31 @@
-import { jest } from "@jest/globals";
+import { jest } from '@jest/globals';
 
 // Mock first
 const hash = jest.fn();
 const compare = jest.fn();
 const sign = jest.fn();
 
-jest.unstable_mockModule("bcrypt", () => ({
+jest.unstable_mockModule('bcrypt', () => ({
   default: {
     hash,
     compare,
   },
 }));
 
-jest.unstable_mockModule("jsonwebtoken", () => ({
+jest.unstable_mockModule('jsonwebtoken', () => ({
   default: {
     sign,
   },
 }));
 
 // Then import modules that depend on them
-const { AuthService } = await import("../../service/AuthService.js");
-const { ROLES } = await import("../../constants/role.constants.js");
-const { ERROR_MESSAGES } = await import("../../constants/messages.constants.js");
-const { HTTP_STATUS } = await import("../../constants/http.constants.js");
+const { AuthService } = await import('../../service/AuthService.js');
+const { ROLES } = await import('../../constants/role.constants.js');
+const { ERROR_MESSAGES } =
+  await import('../../constants/messages.constants.js');
+const { HTTP_STATUS } = await import('../../constants/http.constants.js');
 
-describe("AuthService", () => {
+describe('AuthService', () => {
   let authRepository;
   let authService;
 
@@ -41,25 +42,25 @@ describe("AuthService", () => {
     jest.clearAllMocks();
   });
 
-  describe("signup()", () => {
-    const name = "John Doe";
-    const email = "john@example.com";
-    const password = "Password@123";
+  describe('signup()', () => {
+    const name = 'John Doe';
+    const email = 'john@example.com';
+    const password = 'Password@123';
 
-    it("should register a new account", async () => {
+    it('should register a new account', async () => {
       authRepository.isRegisterByEmail.mockResolvedValue(false);
 
-      hash.mockResolvedValue("hashed-password");
+      hash.mockResolvedValue('hashed-password');
 
       authRepository.registerAccount.mockResolvedValue({
-        id: "123",
+        id: '123',
         name,
         email,
-        image: "image-url",
+        image: 'image-url',
         role: ROLES.PATIENT,
       });
 
-      sign.mockReturnValue("jwt-token");
+      sign.mockReturnValue('jwt-token');
 
       const result = await authService.signup(name, email, password);
 
@@ -70,25 +71,25 @@ describe("AuthService", () => {
       expect(authRepository.registerAccount).toHaveBeenCalledWith({
         name,
         email,
-        password: "hashed-password",
+        password: 'hashed-password',
         role: ROLES.PATIENT,
       });
 
       expect(sign).toHaveBeenCalled();
 
       expect(result).toEqual({
-        accessToken: "jwt-token",
+        accessToken: 'jwt-token',
         accountInfo: {
-          id: "123",
+          id: '123',
           name,
           email,
-          image: "image-url",
+          image: 'image-url',
           role: ROLES.PATIENT,
         },
       });
     });
 
-    it("should throw if email already exists", async () => {
+    it('should throw if email already exists', async () => {
       authRepository.isRegisterByEmail.mockResolvedValue(true);
 
       await expect(
@@ -102,25 +103,25 @@ describe("AuthService", () => {
     });
   });
 
-  describe("signin()", () => {
-    const email = "john@example.com";
-    const password = "Password@123";
+  describe('signin()', () => {
+    const email = 'john@example.com';
+    const password = 'Password@123';
 
     const account = {
-      id: "123",
-      name: "John Doe",
+      id: '123',
+      name: 'John Doe',
       email,
-      password: "hashed-password",
-      image: "image-url",
+      password: 'hashed-password',
+      image: 'image-url',
       role: ROLES.PATIENT,
     };
 
-    it("should login successfully", async () => {
+    it('should login successfully', async () => {
       authRepository.fetchAccountByEmail.mockResolvedValue(account);
 
       compare.mockResolvedValue(true);
 
-      sign.mockReturnValue("jwt-token");
+      sign.mockReturnValue('jwt-token');
 
       const result = await authService.signin(email, password);
 
@@ -129,36 +130,32 @@ describe("AuthService", () => {
       expect(sign).toHaveBeenCalled();
 
       expect(result).toEqual({
-        accessToken: "jwt-token",
+        accessToken: 'jwt-token',
         accountInfo: {
-          id: "123",
-          name: "John Doe",
+          id: '123',
+          name: 'John Doe',
           email,
-          image: "image-url",
+          image: 'image-url',
           role: ROLES.PATIENT,
         },
       });
     });
 
-    it("should throw if account does not exist", async () => {
+    it('should throw if account does not exist', async () => {
       authRepository.fetchAccountByEmail.mockResolvedValue(null);
 
-      await expect(
-        authService.signin(email, password)
-      ).rejects.toMatchObject({
+      await expect(authService.signin(email, password)).rejects.toMatchObject({
         statusCode: HTTP_STATUS.NOT_FOUND,
         message: ERROR_MESSAGES.ACCOUNT_NOT_FOUND,
       });
     });
 
-    it("should throw if password is incorrect", async () => {
+    it('should throw if password is incorrect', async () => {
       authRepository.fetchAccountByEmail.mockResolvedValue(account);
 
       compare.mockResolvedValue(false);
 
-      await expect(
-        authService.signin(email, password)
-      ).rejects.toMatchObject({
+      await expect(authService.signin(email, password)).rejects.toMatchObject({
         statusCode: HTTP_STATUS.UNAUTHORIZED,
         message: ERROR_MESSAGES.INVALID_CREDENTIALS,
       });
@@ -167,32 +164,29 @@ describe("AuthService", () => {
     });
   });
 
-  describe("accountInfo()", () => {
+  describe('accountInfo()', () => {
     const account = {
-      id: "123",
-      name: "John Doe",
-      email: "john@example.com",
-      image: "image-url",
+      id: '123',
+      name: 'John Doe',
+      email: 'john@example.com',
+      image: 'image-url',
       role: ROLES.PATIENT,
     };
 
-    it("should return account information", async () => {
+    it('should return account information', async () => {
       authRepository.fetchAccountById.mockResolvedValue(account);
 
-      const result = await authService.accountInfo("123");
+      const result = await authService.accountInfo('123');
 
-      expect(authRepository.fetchAccountById)
-        .toHaveBeenCalledWith("123");
+      expect(authRepository.fetchAccountById).toHaveBeenCalledWith('123');
 
       expect(result).toEqual(account);
     });
 
-    it("should throw if account does not exist", async () => {
+    it('should throw if account does not exist', async () => {
       authRepository.fetchAccountById.mockResolvedValue(null);
 
-      await expect(
-        authService.accountInfo("123")
-      ).rejects.toMatchObject({
+      await expect(authService.accountInfo('123')).rejects.toMatchObject({
         statusCode: HTTP_STATUS.NOT_FOUND,
         message: ERROR_MESSAGES.ACCOUNT_NOT_FOUND,
       });

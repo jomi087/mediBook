@@ -1,11 +1,11 @@
-import { jest } from "@jest/globals";
+import { jest } from '@jest/globals';
 
-import { authorize } from "../../middleware/authorize.js";
-import { HTTP_STATUS } from "../../constants/http.constants.js";
-import { ERROR_MESSAGES } from "../../constants/messages.constants.js";
-import { ROLES } from "../../constants/role.constants.js";
+import { authorize } from '../../middleware/authorize.js';
+import { HTTP_STATUS } from '../../constants/http.constants.js';
+import { ERROR_MESSAGES } from '../../constants/messages.constants.js';
+import { ROLES } from '../../constants/role.constants.js';
 
-describe("authorize middleware", () => {
+describe('authorize middleware', () => {
   let req;
   let res;
   let next;
@@ -16,9 +16,9 @@ describe("authorize middleware", () => {
     next = jest.fn();
   });
 
-  test("should allow authorized role", () => {
+  test('should allow authorized role', () => {
     req.user = {
-      accountId: "123",
+      accountId: '123',
       role: ROLES.ADMIN,
     };
 
@@ -28,7 +28,7 @@ describe("authorize middleware", () => {
     expect(next).toHaveBeenCalledWith();
   });
 
-  test("should reject request when user is missing", () => {
+  test('should reject request when user is missing', () => {
     authorize(ROLES.ADMIN)(req, res, next);
 
     expect(next).toHaveBeenCalledWith(
@@ -39,9 +39,9 @@ describe("authorize middleware", () => {
     );
   });
 
-  test("should reject forbidden role", () => {
+  test('should reject forbidden role', () => {
     req.user = {
-      accountId: "123",
+      accountId: '123',
       role: ROLES.PATIENT,
     };
 
@@ -55,16 +55,13 @@ describe("authorize middleware", () => {
     );
   });
 
-  test("should allow any role included in allowed roles", () => {
+  test('should allow any role included in allowed roles', () => {
     req.user = {
-      accountId: "123",
+      accountId: '123',
       role: ROLES.DOCTOR,
     };
 
-    authorize(
-      ROLES.ADMIN,
-      ROLES.DOCTOR
-    )(req, res, next);
+    authorize(ROLES.ADMIN, ROLES.DOCTOR)(req, res, next);
 
     expect(next).toHaveBeenCalledTimes(1);
     expect(next).toHaveBeenCalledWith();
